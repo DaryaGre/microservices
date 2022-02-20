@@ -1,0 +1,48 @@
+[+] Building 68.3s (8/8) FINISHED
+ => [internal] load build definition from Dockerfile                                                               0.2s
+ => => transferring dockerfile: 162B                                                                               0.0s
+ => [internal] load .dockerignore                                                                                  0.2s
+ => => transferring context: 2B                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/python:3.9                                                      3.4s
+ => [1/3] FROM docker.io/library/python:3.9@sha256:4df8cb63103761b6bf1fc5c37a329d51d385faa380c969b040834ffe7b37b  51.1s
+ => => resolve docker.io/library/python:3.9@sha256:4df8cb63103761b6bf1fc5c37a329d51d385faa380c969b040834ffe7b37b6  0.1s
+ => => sha256:6f468ed026185ad7f1a13d1dde8f307449fce3777695bfacf91da8f7987b5fd5 2.22kB / 2.22kB                     0.0s
+ => => sha256:412caad352a3ecbb29c080379407ae0761e7b9b454f7239cbfd1d1da25e06b29 5.15MB / 5.15MB                     1.1s
+ => => sha256:4df8cb63103761b6bf1fc5c37a329d51d385faa380c969b040834ffe7b37b646 2.35kB / 2.35kB                     0.0s
+ => => sha256:8033d9650e4e46fa461ff1cd79ba7183d6bc86fa286a90aa9aa0c93eb2970a18 8.49kB / 8.49kB                     0.0s
+ => => sha256:e6d3e61f7a504fa66d7275123969e9917570188650eb84b2280a726b996040f6 10.87MB / 10.87MB                   9.4s
+ => => sha256:0c6b8ff8c37e92eb1ca65ed8917e818927d5bf318b6f18896049b5d9afc28343 54.92MB / 54.92MB                  20.4s
+ => => sha256:461bb1d8c517c7f9fc0f1df66c9dc34c85a23421c1e1c540b2e28cbb258e75f5 54.57MB / 54.57MB                  13.0s
+ => => sha256:808edda3c2e855dc13af758b35cefbcc417ad1ab4fead7f72234b09aeda893a0 196.53MB / 196.53MB                41.4s
+ => => sha256:724cfd2dc19be12b837643ea67bd5ad7a6fd98049a88f02ec70eca30fa03a5a1 6.29MB / 6.29MB                    14.8s
+ => => sha256:3f17120b662fce7fbaf269c93e4bcf6ba1e4389f86d16fcbbdf397596cc7a512 17.72MB / 17.72MB                  19.8s
+ => => sha256:daafe55ab30d753fff1202dd4524d8319578546a4583e2a37d1c41c95e8c7729 238B / 238B                        20.0s
+ => => sha256:9bfe4dd1ecef0508aba3c9046b31cf6671e80df85f92bedacdb28b713f7f1f8d 2.35MB / 2.35MB                    20.7s
+ => => extracting sha256:0c6b8ff8c37e92eb1ca65ed8917e818927d5bf318b6f18896049b5d9afc28343                          2.6s
+ => => extracting sha256:412caad352a3ecbb29c080379407ae0761e7b9b454f7239cbfd1d1da25e06b29                          0.2s
+ => => extracting sha256:e6d3e61f7a504fa66d7275123969e9917570188650eb84b2280a726b996040f6                          0.3s
+ => => extracting sha256:461bb1d8c517c7f9fc0f1df66c9dc34c85a23421c1e1c540b2e28cbb258e75f5                          2.9s
+ => => extracting sha256:808edda3c2e855dc13af758b35cefbcc417ad1ab4fead7f72234b09aeda893a0                          6.9s
+ => => extracting sha256:724cfd2dc19be12b837643ea67bd5ad7a6fd98049a88f02ec70eca30fa03a5a1                          0.3s
+ => => extracting sha256:3f17120b662fce7fbaf269c93e4bcf6ba1e4389f86d16fcbbdf397596cc7a512                          0.7s
+ => => extracting sha256:daafe55ab30d753fff1202dd4524d8319578546a4583e2a37d1c41c95e8c7729                          0.0s
+ => => extracting sha256:9bfe4dd1ecef0508aba3c9046b31cf6671e80df85f92bedacdb28b713f7f1f8d                          0.2s
+ => [internal] load build context                                                                                  0.1s
+ => => transferring context: 3.53kB                                                                                0.0s
+ => [2/3] RUN pip install flask                                                                                   12.9s
+ => [3/3] ADD . /app                                                                                               0.1s
+ => exporting to image                                                                                             0.3s
+ => => exporting layers                                                                                            0.2s
+ => => writing image sha256:fc93d39578efc75d75ee7630a2d69aabfefe0c9250640c46bd509eb6e5e446e8                       0.0s
+ => => naming to docker.io/library/my-img:v0.1                                                                     0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+PS C:\Users\lisjo\gb\microservices> docker images
+REPOSITORY   TAG       IMAGE ID       CREATED              SIZE
+my-img       v0.1      fc93d39578ef   About a minute ago   922MB
+PS C:\Users\lisjo\gb\microservices> docker run --name hw1 -d -p 8080:8080 my-img:v0.1
+76125a06a8ca486990757d32602bcb31bb645ba6972a040f8cb0b2f33c241d7a
+PS C:\Users\lisjo\gb\microservices> docker ps
+CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS          PORTS                    NAMES
+76125a06a8ca   my-img:v0.1   "/bin/sh -c 'python …"   21 minutes ago   Up 21 minutes   0.0.0.0:8080->8080/tcp   hw1
+PS C:\Users\lisjo\gb\microservices>
